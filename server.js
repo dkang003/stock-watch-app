@@ -8,7 +8,9 @@ const
     mongoose = require('mongoose'),
     MONGODB_URI = process.env.MONGODB_URI,
     PORT = process.env.PORT || 3001,
-    path = require('path');
+    path = require('path'),
+    usersRoutes = require('./routes/users.js'),
+    stocksRoutes = require('./routes/stocks.js');
 
 // DB
 mongoose.connect(MONGODB_URI, {useNewUrlParser: true}, (err) => {
@@ -23,7 +25,8 @@ app.get('/api', (req,res) => {
 });
 
 // ROUTES
-// app.use('/api/users', usersRoutes);
+app.use('/api/users', usersRoutes);
+app.use('/api/stocks', stocksRoutes);
 
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));

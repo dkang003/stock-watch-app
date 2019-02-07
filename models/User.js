@@ -1,7 +1,7 @@
 const
     mongoose = require('mongoose'),
     bcrypt = require('bcrypt-nodejs'),
-    userSchema = new.mongoose.Schema({
+    userSchema = new mongoose.Schema({
         // add unique:true to email
         name: { type: String },
         email: { type: String, required: true },
@@ -10,6 +10,8 @@ const
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Stock'
         }]
+        // ,
+        // snapshot:[ stockid, ]
     }, { timestamps: true });
 
 // add method to instance of User to create a hashed password
