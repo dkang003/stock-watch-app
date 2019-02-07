@@ -1,5 +1,6 @@
 const
-    Stock = require('../models/Stock.js');
+    Stock = require('../models/Stock.js'),
+    User = require('../models/User.js');
 
 module.exports = {
     index: (req, res) => {
@@ -42,10 +43,10 @@ module.exports = {
             res.json({ success: true, updatedStock, message: "Update Stock Endpoint" });
         });
     },
-    delete: (req, res) => {
+    destroy: (req, res) => {
         Stock.findByIdAndRemove(req.params.id, (err, deletedStock) => {
             if (err) res.json({ success: false, err });
-            res.json({ success: true, deletedStock });
+            res.json({ success: true, payload: deletedStock });
         });
     }
 }
