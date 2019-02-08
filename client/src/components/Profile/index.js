@@ -4,14 +4,12 @@ import axios from 'axios';
 import WatchedList from '../WatchedList';
 import Stories from '../Stories';
 import Graph from '../Graph';
+import Search from '../Search';
 
 
 export default class Profile extends Component {
 
-// need 3 components
-// 1. users collection of watched stocks
-// 2. a graph component to show stock price data
-// 3. story component to render related news
+
     render() {
         // debugger
         let { currentUser } = this.props;
@@ -20,9 +18,11 @@ export default class Profile extends Component {
                 {/* <h1>Profile</h1> */}
                 <div className="col-4">
                     <WatchedList currentUser={currentUser} />
+                    <Search />
                 </div>
                 <div className="col-8">
                     <Graph />
+    {/* Show top stories by default, show related stories if company is selected */}
                     <Stories />
                 </div>
             </div>

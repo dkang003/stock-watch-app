@@ -5,5 +5,9 @@ const
 
 // index
 apiRoutes.get('/allnews', apiController.index);
+// get all symbols
+apiRoutes.get('/companies', apiController.companies);
+// get one company
+apiRoutes.get('/company/:symbol', apiController.company);
 
 module.exports = apiRoutes;

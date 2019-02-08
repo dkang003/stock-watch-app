@@ -10,7 +10,7 @@ const
     PORT = process.env.PORT || 3001,
     path = require('path'),
     usersRoutes = require('./routes/users.js'),
-    apiRoutes = require('./routes/api'),
+    apiRoutes = require('./routes/api.js'),
     stocksRoutes = require('./routes/stocks.js');
 
 // DB

@@ -8,7 +8,6 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Logout from './components/Logout';
 import Profile from './components/Profile';
-import Search from './components/Search';
 
 class App extends Component {
   state = {
@@ -44,7 +43,6 @@ class App extends Component {
           <Route exact path="/profile" render={(props) => {
             return <Profile currentUser={this.state.currentUser} />
           }} />
-          <Route exact path="/search" component={ Search } />
         </Switch>
       </Layout>
     );
