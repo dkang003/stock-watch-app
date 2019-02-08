@@ -7,6 +7,7 @@ import Landing from './components/Landing';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Logout from './components/Logout';
+import Profile from './components/Profile';
 
 class App extends Component {
   state = {
@@ -24,6 +25,8 @@ class App extends Component {
   }
 
   render() {
+    // debugger
+
       return (
       <Layout currentUser={this.state.currentUser}>
         <Switch>
@@ -36,6 +39,10 @@ class App extends Component {
           }} />
           <Route exact path="/logout" render={() => {
             return <Logout logout={this.logout} />
+          }} />
+          {/* <Route exact path="/profile" component={ Profile } /> */}
+          <Route exact path="/profile" render={(props) => {
+            return <Profile {...props} currentUser={this.state.currentUser} />
           }} />
         </Switch>
       </Layout>

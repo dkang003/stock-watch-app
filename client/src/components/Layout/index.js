@@ -3,9 +3,11 @@ import Navbar from './Navbar';
 
 export default class Layout extends Component {
     render() {
+        let {currentUser} = this.props;
+        // debugger
         return(
             <div>
-                <Navbar />
+                <Navbar currentUser={ currentUser } />
                 { this.props.children }
             </div>
         )
