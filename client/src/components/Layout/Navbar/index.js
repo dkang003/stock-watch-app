@@ -15,7 +15,7 @@ export default({ currentUser }) => {
                 <div className="navbar-nav">
                     <Link className="nav-link nav-item" to="/logout">Log Out</Link>
                     <Link className="nav-link nav-item" to="/profile">My Profile</Link>
-                    <a className="nav-item nav-link" href="#">Search Stocks</a>
+                    <Link className="nav-link nav-item" to="/search">Search</Link>
                     <a className="nav-item nav-link" href="#">Edit Profile</a>
                 </div>
                 ) : (

@@ -3,6 +3,7 @@ require('dotenv').config();
 const
     express = require('express'),
     app = express(),
+    axios = require('axios'),
     logger = require('morgan'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
@@ -27,6 +28,17 @@ app.get('/api', (req,res) => {
 // ROUTES
 app.use('/api/users', usersRoutes);
 app.use('/api/stocks', stocksRoutes);
+
+// PINGING STOCKS API
+app.get('/getnews', (req, res) => {
+    axios.get('https://api.iextrading.com/1.0/stock/market/news/last/10')
+    .then(response => {
+        res.json(response.data)
+    }).catch(err => {
+        debugger
+    })
+})
+
 
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));

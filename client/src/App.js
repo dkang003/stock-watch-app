@@ -40,9 +40,8 @@ class App extends Component {
           <Route exact path="/logout" render={() => {
             return <Logout logout={this.logout} />
           }} />
-          {/* <Route exact path="/profile" component={ Profile } /> */}
           <Route exact path="/profile" render={(props) => {
-            return <Profile {...props} currentUser={this.state.currentUser} />
+            return <Profile currentUser={this.state.currentUser} />
           }} />
         </Switch>
       </Layout>
