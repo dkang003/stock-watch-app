@@ -11,6 +11,8 @@ export default({ currentUser }) => {
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div className="navbar-nav">
                     <Link className="nav-link nav-item" to="/login">Log In</Link>
+                    <Link className="nav-link nav-item" to="/signup">Sign Up</Link>
+                    <Link className="nav-link nav-item" to="/logout">Log Out</Link>
                     <a className="nav-item nav-link" href="#">Search Stocks</a>
                     <a className="nav-item nav-link" href="#">Edit Profile</a>
                 </div>
