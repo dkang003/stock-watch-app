@@ -8,9 +8,8 @@ const
 usersRouter.get('/', usersController.index);
 // create new user
 usersRouter.post('/', usersController.create);
-
 // user login route
-usersRouter.post('/', usersController.authenticate);
+usersRouter.post('/authenticate', usersController.authenticate);
 
 // protect the following routes by verifying token
 usersRouter.use(verifyToken);

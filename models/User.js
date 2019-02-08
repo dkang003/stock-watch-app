@@ -2,10 +2,9 @@ const
     mongoose = require('mongoose'),
     bcrypt = require('bcrypt-nodejs'),
     userSchema = new mongoose.Schema({
-        // add unique:true to email
         name: { type: String },
-        email: { type: String, required: true },
-        password: {type: String, required: true },
+        email: { type: String, required: true, unique: true },
+        password: { type: String, required: true },
         watchedStocks: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Stock'

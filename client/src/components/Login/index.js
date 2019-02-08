@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import httpClient from '../../utilities/httpClient';
 
-export default class Login extends Component {
+class Login extends Component {
     state = {
         email: "",
         password: ""
@@ -14,10 +14,12 @@ export default class Login extends Component {
 
     handleSubmit = async (e) => {
         e.preventDefault();
+        // let {email, password} = this.state;
         let user = await httpClient.authenticate(this.state, "/api/users/authenticate");
         if (user) {
             this.props.onLoginSuccess();
             this.props.history.push("/profile");
+            console.log("YAY")
         } else {
             console.log("Not An Authenticated User")
         }
@@ -31,25 +33,22 @@ export default class Login extends Component {
                 <h1>Log In</h1>
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group">
-                        <label htmlFor="exampleInputEmail1">Email address</label>
+                        <label>Email address</label>
                         <input 
                             type="text" 
                             name="email"
                             className="form-control" 
-                            id="exampleInputEmail1" 
-                            aria-describedby="emailHelp" 
                             placeholder="Enter email"
                             value={email}
                             onChange={this.handleChange} />
                         <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="exampleInputPassword1">Password</label>
+                        <label>Password</label>
                         <input 
                         type="password" 
                         name="password"
                         className="form-control" 
-                        id="exampleInputPassword1" 
                         placeholder="Password"
                         value={password}
                         onChange={this.handleChange} />
@@ -60,3 +59,5 @@ export default class Login extends Component {
         )
     }
 }
+
+export default Login;
