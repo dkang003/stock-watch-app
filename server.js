@@ -3,7 +3,6 @@ require('dotenv').config();
 const
     express = require('express'),
     app = express(),
-    axios = require('axios'),
     logger = require('morgan'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
@@ -11,6 +10,7 @@ const
     PORT = process.env.PORT || 3001,
     path = require('path'),
     usersRoutes = require('./routes/users.js'),
+    apiRoutes = require('./routes/api'),
     stocksRoutes = require('./routes/stocks.js');
 
 // DB
@@ -28,16 +28,7 @@ app.get('/api', (req,res) => {
 // ROUTES
 app.use('/api/users', usersRoutes);
 app.use('/api/stocks', stocksRoutes);
-
-// PINGING STOCKS API
-app.get('/getnews', (req, res) => {
-    axios.get('https://api.iextrading.com/1.0/stock/market/news/last/10')
-    .then(response => {
-        res.json(response.data)
-    }).catch(err => {
-        debugger
-    })
-})
+app.use('/api/data', apiRoutes);
 
 
 app.get("*", (req, res) => {

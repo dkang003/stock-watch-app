@@ -8,7 +8,7 @@ export default class Stories extends Component {
 
     async componentDidMount() {
         try{
-            let res = await axios.get(`/getnews`)
+            let res = await axios.get(`api/data/allnews`)
             // debugger
             this.setState({ stories: res.data })
         } catch(err) {
