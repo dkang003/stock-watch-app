@@ -24,7 +24,6 @@ export default class Search extends Component {
             }
         })
         this.setState({ searchResult: searched });
-        debugger
     }
 
     // component did mount
