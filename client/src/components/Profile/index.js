@@ -16,11 +16,11 @@ export default class Profile extends Component {
         return(
             <div className="row">
                 {/* <h1>Profile</h1> */}
-                <div className="col-4">
+                <div className="col-3">
                     <WatchedList currentUser={currentUser} />
                     <Search />
                 </div>
-                <div className="col-8">
+                <div className="col-9">
                     <Graph />
     {/* Show top stories by default, show related stories if company is selected */}
                     <Stories />

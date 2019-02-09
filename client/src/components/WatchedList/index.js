@@ -8,7 +8,7 @@ export default class WatchedList extends Component {
         // array of watched stocks === currentUser.watchedStocks 
 
         return(
-            <h2>User is watching this list</h2>
+            <h2>Watched Stocks</h2>
         )
     }
 }

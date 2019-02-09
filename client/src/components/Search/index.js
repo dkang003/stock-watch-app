@@ -4,7 +4,27 @@ import axios from 'axios';
 
 export default class Search extends Component {
     state = {
-        companies: []
+        companies: [],
+        searchResult:null,
+        searchString: ""
+    }
+
+    handleChange = (e) => {
+        let { name, value } = e.target;
+        this.setState({ [name]: value });
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        let {searchString, companies} = this.state;
+
+        let searched = companies.filter(obj => {
+            if (obj.name.toLowerCase().indexOf(searchString.toLowerCase()) === 0) {
+                return obj.name;
+            }
+        })
+        this.setState({ searchResult: searched });
+        debugger
     }
 
     // component did mount
@@ -20,21 +40,35 @@ export default class Search extends Component {
 
     }
     render() {
+        let { companies, searchResult } = this.state;
+
         // debugger
-        let { companies } = this.state;
+        
         return(
             <div>
-                <h1>SEARCH PAGE!</h1>
-                <ul>
-                { companies.map((company, i) => {
-                    return <li key={i}>
-                        <p>Name: {company.name},
-                        Symbol: {company.symbol}</p>
-                        {/* clicking this link should load 'show page' under the profile's graph */}
-                        <Link  company={ company } to={ "/company" }>{company.name} </Link>
-                        </li>
-                })}
-                </ul>
+            <form onSubmit={this.handleSubmit}>
+                <div className="form-group">
+                    <label>Search</label>
+                    <input 
+                        type="text" 
+                        name="searchString"
+                        className="form-control" 
+                        placeholder="Search for Company"
+                        onChange={this.handleChange} />
+                </div>
+                <button type="submit" className="btn btn-primary">Search</button>
+            </form>
+            { searchResult ? searchResult.map((result,index) => {
+                return <div className="card col-12" key={index}>
+                <div className="card-body text-left">
+                    <h4 className="card-title">{result.name}</h4>
+                    <h4 className="card-subtitle">Symbol: {result.symbol}</h4>
+                </div>
+            </div>
+            }) 
+            :
+            console.log("NULL")
+            }
             </div>
         )
     }

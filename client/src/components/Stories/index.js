@@ -21,11 +21,11 @@ export default class Stories extends Component {
         // stories.datetime, headline, source, url, image, related
 
         return (
-            <div className="row">
+            <div>
                 <h1>Top News</h1>
                 <div className="row">
                 { stories.map((story, i) => {
-                    return <div className="card col-sm-6 col-md-4" key={i}>
+                    return <div className="card col-sm-12 col-md-4" key={i}>
                         <div className="card-body text-center">
                             <h4 className="card-subtitle">{story.datetime}</h4>
                             <h4 className="card-title">{story.headline}</h4>
