@@ -9,14 +9,23 @@ export default class Button extends Component {
         liked: false
     }
 
-    componentDidMount() {
-        // debugger
+    async componentDidMount() {
+        // check if this.props.result.symbol is in currentUsers watchedStocks array
+        // this.props.result.symbol
+
         this.setState({ currentUser: this.props.currentUser })
+        let res = await axios.get(`/api/stocks/symbol/${this.props.result.symbol}`)
+        
+        if (res.data.payload[0] !== undefined && res.data.payload[0].watchingUsers.includes(this.props.currentUser._id)) {
+            this.setState({ liked: true })
+        }
+        // debugger
     }
 
     handleSubmit = async (e) => {
         e.preventDefault();
-        // e.currentTarget[0].id => Company's stock symbol
+        
+        this.setState({ liked: !this.state.liked })
         let symbol = e.currentTarget[0].id;
         let { currentUser } = this.state;
         // debugger
@@ -46,19 +55,21 @@ export default class Button extends Component {
         } catch(err) {
             debugger
         }
-
-        // if it is not, add the symbol into the currentUsers watched stocks array
-        // then add the currentUsers ID into the stocks watchingUsers array
-
-        // else, remove the current symbol from the users watched list
-        // then remove the currentUsers id from the stocks watchingUsers array
     }
     
     render() {
+        // let { liked } = this.state;
+
         // debugger
         return(
             <form onSubmit={this.handleSubmit}>
-                <button id={this.props.result.symbol} type="submit" className="btn btn-primary">Watch this Stock</button>
+            { this.state.liked
+                ? (
+                    <button id={this.props.result.symbol} type="submit" className="btn btn-primary">Stop Watching</button>
+                ) : (
+                    <button id={this.props.result.symbol} type="submit" className="btn btn-primary">Watch this Stock</button>
+                )
+            }
             </form>
         )
     }

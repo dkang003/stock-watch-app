@@ -10,11 +10,9 @@ module.exports = {
         })
     },
     show: (req, res) => {
-        // console.log(req.params.id);
-        let id = req.params.id.toUpperCase();
-        Stock.find({ symbol: id }, (err, stock) => {
+        Stock.findById(req.params.id, (err, stock) => {
             if (err) res.json({ success: false, err });
-            res.json({ success: true, stock });
+            res.json({ success: true, stock })
         })
     },
     // stock will be created when a user decides to like a stock, and it does NOT exist in DB
