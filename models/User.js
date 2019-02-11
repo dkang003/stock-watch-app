@@ -6,8 +6,8 @@ const
         email: { type: String, required: true, unique: true },
         password: { type: String, required: true },
         watchedStocks: [{
-            type: String,
-            required: true
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Stock'
         }]
         // ,
         // snapshot:[ stockid, ]

@@ -9,12 +9,15 @@ import Search from '../Search';
 
 export default class Profile extends Component {
     state = {
-        watched: []
+        watched: null
     }
 
     componentDidMount() {
-        this.setState({ watched: this.props.currentUser.watchedStocks })
         // debugger
+        
+        if (this.props.currentUser !== null){
+            this.setState({ watched: this.props.currentUser.watchedStocks })
+        }
     }
 
     render() {
@@ -30,7 +33,7 @@ export default class Profile extends Component {
                 <div className="col-9">
                     <Graph currentUser={currentUser} />
     {/* Show top stories by default, show related stories if company is selected */}
-                    <Stories />
+                    <Stories currentUser={currentUser} />
                 </div>
             </div>
         )

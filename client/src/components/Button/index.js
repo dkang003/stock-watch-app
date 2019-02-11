@@ -22,16 +22,27 @@ export default class Button extends Component {
         // debugger
         try {
             // first, check if the stock symbol exists in our DB
-            let res = await axios.get(`api/stocks/${symbol}`)
+            let res = await axios.get(`api/stocks/symbol/${symbol}`)
             // if it doesn't exist, create an instance of the stock model
             // debugger
-            if (res.data.stock.length === 0) {
+            if (res.data.payload.length === 0) { // didn't find stock in DB
                 // since it is being created, we already know userId needs to be added to stock and vice versa
-                let newStock = await axios.post(`/api/stocks/`, {symbol: symbol, user: currentUser})
+                let newStock = await axios.post(`/api/stocks/`, {symbol: symbol})
+                // debugger // newStock.data.newStock
                 // this.setState({ liked: true })
+            } else if (res.data.payload[0].watchingUsers.includes(currentUser._id)) {
+                // if the array of users watching this company includes the current user
+                // that means he is already watching and no longer wants to
+                // aka remove references
+                let stockID = res.data.payload[0]._id
+                await axios.patch(`api/stocks/${stockID}/remove`)
             } else {
-                let updatedStock = await axios.patch(`api/stocks/${symbol}`, {symbol: symbol, user: currentUser})
-            }            
+                // the company exists in the DB, and the user is not in the companys
+                // array of watching users
+                // aka add references
+                let stockID = res.data.payload[0]._id
+                await axios.patch(`api/stocks/${stockID}/add`)
+            }
         } catch(err) {
             debugger
         }

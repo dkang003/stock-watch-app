@@ -3,10 +3,13 @@ import axios from 'axios';
 
 export default class Stories extends Component {
     state = {
-        stories: []
+        stories: [],
+        loading: true
     }
 
     async componentDidMount() {
+        // after signing up and redirecting to profile, first time load errors out
+        // says the api call to populate news does not have the token...
         try{
             let res = await axios.get(`api/data/allnews`)
             // debugger
@@ -14,6 +17,7 @@ export default class Stories extends Component {
         } catch(err) {
             console.log(err);
         }
+        
     }
 
     render() {

@@ -20,6 +20,7 @@ class Signup extends Component {
         .then( res => {
             let token = res.data.token;
             httpClient.setToken(token);
+            this.props.onSignupSuccess();
             this.props.history.push('/profile');
         })
     }
