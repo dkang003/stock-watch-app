@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import Button from '../Button';
 import axios from 'axios';
 
 export default class Search extends Component {
@@ -36,11 +36,11 @@ export default class Search extends Component {
         } catch(err) {
             console.log(err);
         }
-
     }
+
     render() {
         let { companies, searchResult } = this.state;
-
+        let { currentUser } = this.props;
         // debugger
         
         return(
@@ -63,6 +63,8 @@ export default class Search extends Component {
                     <h4 className="card-title">{result.name}</h4>
                     <h4 className="card-subtitle">Symbol: {result.symbol}</h4>
                 </div>
+                {/* this button component will have access to the result through props */}
+                <Button currentUser={currentUser} result={result} />
             </div>
             }) 
             :
