@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 export default class Graph extends Component {
+    // this.props.stock // is a sybol of the stock
+    componentDidMount() {
+        
+        debugger
+    }
+
     render() {
         let { currentUser } = this.props;
         

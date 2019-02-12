@@ -1,14 +1,26 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
-
-export default class WatchedList extends Component {
+// export default class WatchedList extends Component {
     
-    render() {
-        let { currentUser } = this.props;
-        // array of watched stocks === currentUser.watchedStocks 
+//     render() {
+//         let { stocks, handleClick } = this.props
+//         debugger
+//         { if (stocks === undefined) {
+//             return <div>loading</div>
+//         } else {
+//             return(
+//                 <h1>WTF</h1>
+//             )
+//         }}
+//     }
+// }
 
-        return(
-            <h2>Watched Stocks</h2>
-        )
-    }
-}
+export default ({ key, stock, handleClick }) => (
+    <li key={key} onClick={() => handleClick(stock)}>{stock}</li>
+    // <ul>
+        // {stocks.map(stock => {
+            // return <li onClick={() => handleClick(stock)}>{stock}</li>
+        // })}
+    // </ul>
+)
