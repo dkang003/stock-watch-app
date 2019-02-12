@@ -36,6 +36,7 @@ module.exports = {
         .then(response => {
             res.json(response.data)
         }).catch(err => {
+            // console.log(err)
             console.log("apiController LINE 39")
         })
     }

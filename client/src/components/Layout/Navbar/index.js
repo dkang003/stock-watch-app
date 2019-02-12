@@ -14,7 +14,8 @@ export default({ currentUser }) => {
             ? (
                 <div className="navbar-nav">
                     <Link className="nav-link nav-item" to="/logout">Log Out</Link>
-                    <Link className="nav-link nav-item" to="/profile">My Profile</Link>
+                    <Link className="nav-link nav-item" to="/profile">My Watched Stocks</Link>
+                    <Link className="nav-link nav-item" to="/edit">Edit My Profile</Link>
                 </div>
                 ) : (
                 <div className="navbar-nav">

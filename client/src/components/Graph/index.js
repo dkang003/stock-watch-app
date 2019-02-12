@@ -6,17 +6,18 @@ export default class Graph extends Component {
     // this.props.stock // is a sybol of the stock
     state={
         data: null,
-        loading: true
+        loading: true,
+        symbol: null
     }
 
     render() {
-        let { currentUser, stock } = this.props;
-        
-        if (this.state.loading) {
+        let { stock } = this.props;
+        // debugger
+        if (this.state.loading || stock !== this.state.symbol) {
             // debugger
             axios.get(`/api/data/company/${stock}/chart`)
             .then(res => {
-                this.setState({ data: res.data, loading: false })
+                this.setState({ data: res.data, loading: false, symbol: stock })
                 // debugger
             }).catch(err => {
                 debugger
