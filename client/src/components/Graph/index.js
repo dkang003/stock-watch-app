@@ -1,32 +1,45 @@
 import React, { Component } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Label, ResponsiveContainer } from 'recharts';
+import axios from 'axios';
 
 export default class Graph extends Component {
     // this.props.stock // is a sybol of the stock
-    componentDidMount() {
-        
-        debugger
+    state={
+        data: null
     }
 
     render() {
-        let { currentUser } = this.props;
+        let { currentUser, stock } = this.props;
+        
+        if (stock !== undefined) {
+            axios.get(`/api/data/company/${stock}/chart`)
+            .then(res => {
+                this.setState({ data: res.data })
+                // debugger
+            }).catch(err => {
+                debugger
+            })
+        }
         
         return(
             <div>
-                <h1>Graph goes Here</h1>
-                <LineChart
-                    width={400}
-                    height={400}
-                    // data={data}
-                    margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
-                    >
-                    <XAxis dataKey="name" />
+                { (stock !== undefined) 
+                ? (<h1>{stock}</h1>)
+                :
+                (<h1>See a chart here</h1>)
+                }
+                
+                <LineChart width={730} height={400} data={this.state.data}
+                    margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="date" />
+                    <YAxis domain={['auto','auto']} />
                     <Tooltip />
-                    <CartesianGrid stroke="#f5f5f5" />
-                    <Line type="monotone" dataKey="uv" stroke="#ff7300" yAxisId={0} />
-                    <Line type="monotone" dataKey="pv" stroke="#387908" yAxisId={1} />
+                    <Legend />
+                    <Line type="monotone" dataKey="high" stroke="#8884d8" />
+                    <Line type="monotone" dataKey="low" stroke="#82ca9d" />
                 </LineChart>
-            </div>
+            </div>   
         )
     }
 }

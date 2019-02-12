@@ -13,5 +13,7 @@ apiRoutes.get('/allnews', apiController.index);
 apiRoutes.get('/companies', apiController.companies);
 // get one company
 apiRoutes.get('/company/:symbol', apiController.company);
+// get one company's charts
+apiRoutes.get('/company/:symbol/chart', apiController.chart);
 
 module.exports = apiRoutes;

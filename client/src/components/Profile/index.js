@@ -5,12 +5,11 @@ import WatchedList from '../WatchedList';
 import Stories from '../Stories';
 import Graph from '../Graph';
 import Search from '../Search';
-import { symlinkSync } from 'fs';
+
 
 
 export default class Profile extends Component {
     state = {
-        stock: 1,
         results: [],
         symbols: []
     }
@@ -46,9 +45,6 @@ export default class Profile extends Component {
         // debugger
     }
 
-    
-    
-
     render() {
         let { currentUser } = this.props;
         let { watchingStocks, symbols } = this.state; //array of ID's
@@ -71,10 +67,9 @@ export default class Profile extends Component {
                     <Search currentUser={currentUser} />
                 </div>
                 <div className="col-9">
-                    {/* <Graph stock={this.state.stock}/> */}
-                    <h1>{this.state.stock}</h1>
+                    <Graph stock={this.state.stock}/>
     {/* Show top stories by default, show related stories if company is selected */}
-                    <Stories currentUser={currentUser} />
+                    <Stories />
                 </div>
             </div>
         )
