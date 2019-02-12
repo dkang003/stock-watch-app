@@ -5,16 +5,18 @@ import axios from 'axios';
 export default class Graph extends Component {
     // this.props.stock // is a sybol of the stock
     state={
-        data: null
+        data: null,
+        loading: true
     }
 
     render() {
         let { currentUser, stock } = this.props;
         
-        if (stock !== undefined) {
+        if (this.state.loading) {
+            // debugger
             axios.get(`/api/data/company/${stock}/chart`)
             .then(res => {
-                this.setState({ data: res.data })
+                this.setState({ data: res.data, loading: false })
                 // debugger
             }).catch(err => {
                 debugger
@@ -23,10 +25,10 @@ export default class Graph extends Component {
         
         return(
             <div>
-                { (stock !== undefined) 
-                ? (<h1>{stock}</h1>)
+                { (this.state.loading) 
+                ? (<h1>See a chart here</h1>)
                 :
-                (<h1>See a chart here</h1>)
+                (<h1>{stock}</h1>)
                 }
                 
                 <LineChart width={730} height={400} data={this.state.data}
