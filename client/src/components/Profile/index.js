@@ -76,7 +76,7 @@ export default class Profile extends Component {
                 <div className="col-9">
                     <Graph stock={this.state.stock} company={this.state.companyInfo} />
     {/* Show top stories by default, show related stories if company is selected */}
-                    <Stories />
+                    <Stories stock={this.state.stock} />
                 </div>
             </div>
         )

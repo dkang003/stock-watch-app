@@ -48,6 +48,14 @@ module.exports = {
         }).catch(err => {
             console.log("apiController LINE 49")
         })
+    },
+    relatednews: (req, res) => {
+        axios.get(`https://api.iextrading.com/1.0/stock/${req.params.symbol}/news`)
+        .then(response => {
+            res.json(response.data)
+        }).catch(err => {
+            console.log("apiController LINE 57")
+        })
     }
 }
 

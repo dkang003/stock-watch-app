@@ -4,10 +4,10 @@ import axios from 'axios';
 export default class Stories extends Component {
     state = {
         stories: [],
-        relatedStories: null,
-        loading: true
+        relatedStories: null
     }
 
+    // load top news by default
     async componentDidMount() {
         // after signing up and redirecting to profile, first time load errors out
         // says the api call to populate news does not have the token...
@@ -17,27 +17,37 @@ export default class Stories extends Component {
             this.setState({ stories: res.data })
         } catch(err) {
             debugger
-        }
-        
+        }   
     }
 
+    // load related news if there is a this.props.stock
+    getRelatedNews(stock) {
+        axios.get(`api/data/relatednews/${stock}`)
+        .then(res => {
+            this.setState({ relatedStories: res.data })
+        }).catch(err => {
+            debugger
+        })
+    }
+
+    
     render() {
-        let { stories, loading } = this.state;
-        let { stock, company } = this.props;
-        
-        if (stock && loading) {
+        let { stories } = this.state;
+        let { stock } = this.props;
+
+        if (stock) {
             axios.get(`api/data/relatednews/${stock}`)
             .then(res => {
-                this.setState({ relatedStories: res.data, loading: false })
-                // debugger
+                this.setState({ relatedStories: res.data })
             }).catch(err => {
                 debugger
             })
         }
-        // const relatedStoriesExist = this.state.relatedStories;
+
+        const relatedStoriesExist = this.state.relatedStories;
         return (
             <div>
-            {company ? 
+            {relatedStoriesExist ? 
             (
                 <div>
                     <h1>Related News</h1>

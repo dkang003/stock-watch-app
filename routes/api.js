@@ -17,5 +17,7 @@ apiRoutes.get('/mostactive', apiController.mostactive);
 apiRoutes.get('/company/:symbol', apiController.company);
 // get one company's charts
 apiRoutes.get('/company/:symbol/chart', apiController.chart);
+// related news
+apiRoutes.get('/relatednews/:symbol', apiController.relatednews);
 
 module.exports = apiRoutes;

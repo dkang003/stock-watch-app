@@ -10,7 +10,7 @@ export default class HomeGraph extends Component {
     async componentDidMount() {
         let res = await axios.get('api/data/mostactive')
         this.setState({ data: res.data })
-        debugger
+        // debugger
     }
     
     render() {

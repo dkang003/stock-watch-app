@@ -14,7 +14,7 @@ export default class Graph extends Component {
     render() {
         let { stock, company } = this.props;
         // debugger
-        if (this.state.loading || stock !== this.state.symbol) {
+        if (stock && this.state.loading || stock !== this.state.symbol) {
             // debugger
             axios.get(`/api/data/company/${stock}/chart`)
             .then(res => {
