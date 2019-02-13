@@ -4,7 +4,8 @@ import axios from 'axios';
 export default class Stories extends Component {
     state = {
         stories: [],
-        relatedStories: null
+        relatedStories: null,
+        subject: ""
     }
 
     // load top news by default
@@ -32,13 +33,13 @@ export default class Stories extends Component {
 
     
     render() {
-        let { stories } = this.state;
+        let { stories, subject } = this.state;
         let { stock } = this.props;
 
-        if (stock) {
+        if (stock && stock !== subject) {
             axios.get(`api/data/relatednews/${stock}`)
             .then(res => {
-                this.setState({ relatedStories: res.data })
+                this.setState({ relatedStories: res.data, subject: stock })
             }).catch(err => {
                 debugger
             })

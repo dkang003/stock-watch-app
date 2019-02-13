@@ -85,7 +85,7 @@ export default class Edit extends Component {
                     <button type="submit" className="btn btn-primary">Edit My Profile</button>
                 </form>
                 <form onSubmit={this.handleDelete}>
-                <button type="submit" className="btn btn-primary">Delete Account</button>
+                <button type="submit" className="btn btn-danger">Delete Account</button>
                 </form>
             </div>
         )
