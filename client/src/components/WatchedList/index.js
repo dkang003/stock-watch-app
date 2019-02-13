@@ -3,8 +3,8 @@ import axios from 'axios';
 
 
 {/* <li key={key} onClick={() => handleClick(stock)}>{stock}</li> */}
-export default ({ key, stock, handleClick }) => (
+export default ({ stock, handleClick }) => (
     <div>
-        <button key={key} onClick={() => handleClick(stock)}>{stock}</button>
+        <button onClick={() => handleClick(stock)}>{stock}</button>
     </div>
 )
