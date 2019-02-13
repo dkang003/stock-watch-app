@@ -11,12 +11,19 @@ import Search from '../Search';
 export default class Profile extends Component {
     state = {
         results: [],
-        symbols: []
+        symbols: [],
+        companyInfo: null
     }
 
     handleClick = (stock) => { 
-        // debugger
         this.setState({ stock })
+        axios.get(`/api/data/company/${stock}`)
+        .then(res => {
+            this.setState({ companyInfo: res.data })
+        }).catch(err => {
+            debugger
+        })
+        
     }
 
     async componentDidMount() {
@@ -52,22 +59,22 @@ export default class Profile extends Component {
 
         return(
             <div className="row">
-                {/* <h1>Profile</h1> */}
                 <div className="col-3">
-                { (symbols.length > 0)
-                ? (symbols.map((symbol, i) => {
-                    return <WatchedList 
+                    { (symbols.length > 0)
+                    ? (symbols.map((symbol, i) => {
+                        return <WatchedList 
                         key={i}
                         stock={symbol} 
                         handleClick={this.handleClick}/>
-                }))
-                :
-                (<h1>hi</h1>)
-                }
-                    <Search currentUser={currentUser} />
+                    }))
+                    :
+                    (<h1></h1>)
+                    }
+                
+                    <Search currentUser={currentUser} />    
                 </div>
                 <div className="col-9">
-                    <Graph stock={this.state.stock}/>
+                    <Graph stock={this.state.stock} company={this.state.companyInfo} />
     {/* Show top stories by default, show related stories if company is selected */}
                     <Stories />
                 </div>

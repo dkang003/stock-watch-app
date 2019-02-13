@@ -11,6 +11,8 @@ apiRoutes.use(verifyToken);
 apiRoutes.get('/allnews', apiController.index);
 // get all symbols
 apiRoutes.get('/companies', apiController.companies);
+// get most active companies
+apiRoutes.get('/mostactive', apiController.mostactive);
 // get one company
 apiRoutes.get('/company/:symbol', apiController.company);
 // get one company's charts

@@ -23,7 +23,7 @@ module.exports = {
     },
     // return one company
     company: (req, res) => {
-        axios.get(`https://api.iextrading.com/1.0/stock/${req.params.id}/company`)
+        axios.get(`https://api.iextrading.com/1.0/stock/${req.params.symbol}/company`)
         .then(response => {
             res.json(response.data)
         }).catch(err => {
@@ -36,8 +36,17 @@ module.exports = {
         .then(response => {
             res.json(response.data)
         }).catch(err => {
-            // console.log(err)
             console.log("apiController LINE 39")
+        })
+    },
+    // gets the most active companies
+    mostactive: (req, res) => {
+        axios.get(`https://api.iextrading.com/1.0/stock/market/list/mostactive`)
+        .then(response => {
+            console.log(response.data)
+            res.json(response.data)
+        }).catch(err => {
+            console.log("apiController LINE 49")
         })
     }
 }
