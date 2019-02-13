@@ -8,6 +8,10 @@
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
+  "engines": {
+    "node": "11.7.0",
+    "npm": "6.5.0"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
