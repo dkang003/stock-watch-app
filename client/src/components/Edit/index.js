@@ -33,6 +33,19 @@ export default class Edit extends Component {
         })
     }
 
+    handleDelete = (e) => {
+        e.preventDefault();
+        let { id } = this.state;
+        // need currentUser id then send .delete to /api/users/:id
+        axios.delete(`/api/users/${id}`)
+        .then( res => {
+            httpClient.logout();
+            this.props.history.push('/');
+            // debugger
+        })
+        debugger
+    }
+
     render() {
         // debugger
         return(
@@ -70,6 +83,9 @@ export default class Edit extends Component {
                         onChange={this.handleChange} />
                     </div>
                     <button type="submit" className="btn btn-primary">Edit My Profile</button>
+                </form>
+                <form onSubmit={this.handleDelete}>
+                <button type="submit" className="btn btn-primary">Delete Account</button>
                 </form>
             </div>
         )
