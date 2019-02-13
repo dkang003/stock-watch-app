@@ -65,6 +65,8 @@ export default class Search extends Component {
                 </div>
                 {/* this button component will have access to the result through props */}
                 <Button currentUser={currentUser} result={result} />
+                {/* make button to display this stock's info */}
+                <button className="btn btn-success" onClick={() => this.props.handleClick(result.symbol)}>View {result.symbol}</button>
             </div>
             }) 
             :

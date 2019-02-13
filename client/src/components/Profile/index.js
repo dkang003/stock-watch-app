@@ -74,7 +74,7 @@ export default class Profile extends Component {
                     (<h1></h1>)
                     }
                 
-                    <Search currentUser={currentUser} />    
+                    <Search currentUser={currentUser} handleClick={this.handleClick} />    
                 </div>
                 <div className="col-9">
                     <Graph stock={this.state.stock} company={this.state.companyInfo} />
