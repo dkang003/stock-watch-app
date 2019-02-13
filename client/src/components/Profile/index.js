@@ -30,7 +30,7 @@ export default class Profile extends Component {
         if (this.props.currentUser !== null) {
             let { _id } = this.props.currentUser;
             let res = await axios.get(`/api/users/${_id}`)
-            // res.data.payload.watchedStocks //array
+            // get the current users array of watched stocks and set it to state
             this.setState({ watchingStocks: res.data.payload.watchedStocks })
         }
         // debugger
@@ -39,12 +39,15 @@ export default class Profile extends Component {
 
     // how can I push res.data.stock.symbols into the temp array before loading
     getSymbols() {
-        let {watchingStocks, symbols} = this.state;
+        let {watchingStocks} = this.state;
         let temp = [];
-        if (watchingStocks !== undefined) {
+        if (watchingStocks !== undefined) { // if users array of watched stocks is in state
+            // have an array of the mongo ID for the stocks
             watchingStocks.map(async(id) => {
+                // for each id, ping the api 
                 let res = await axios.get(`api/stocks/${id}`)
                 // debugger
+                // and store its symbol into the temp array
                 temp.push(res.data.stock.symbol)
             })
         }
@@ -54,7 +57,7 @@ export default class Profile extends Component {
 
     render() {
         let { currentUser } = this.props;
-        let { watchingStocks, symbols } = this.state; //array of ID's
+        let { symbols } = this.state; //array of ID's
         // debugger
 
         return(
