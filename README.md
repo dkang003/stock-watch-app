@@ -60,4 +60,4 @@ Deploying to Heroku
 https://github.com/dkang003/stock-watch-app
 
 ##Deployed App
-[Click here for App](https://dk-stockwatch.herokuapp.com/profile)
+[Click here for App](https://dk-stockwatch.herokuapp.com/)
