@@ -56,8 +56,8 @@ export default class Stories extends Component {
                     { this.state.relatedStories.map((story, i) => {
                         return <div className="card col-sm-12 col-md-4" key={i}>
                             <div className="card-body text-center">
-                                <h4 className="card-subtitle">{story.datetime}</h4>
-                                <h4 className="card-title">{story.headline}</h4>
+                                <h6 className="card-subtitle">{story.datetime}</h6>
+                                <h5 className="card-title">{story.headline}</h5>
                                 <a href={story.url}>{story.url}</a>
                                 <p>Sources: {story.source}</p>
                                 <p>Related: {story.related}</p>
@@ -74,8 +74,8 @@ export default class Stories extends Component {
                     { stories.map((story, i) => {
                         return <div className="card col-sm-12 col-md-4" key={i}>
                             <div className="card-body text-center">
-                                <h4 className="card-subtitle">{story.datetime}</h4>
-                                <h4 className="card-title">{story.headline}</h4>
+                                <h6 className="card-subtitle">{story.datetime}</h6>
+                                <h5 className="card-title">{story.headline}</h5>
                                 <a href={story.url}>{story.url}</a>
                                 <p>Sources: {story.source}</p>
                                 <p>Related: {story.related}</p>

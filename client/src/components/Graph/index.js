@@ -8,20 +8,30 @@ export default class Graph extends Component {
     state={
         data: null,
         loading: true,
-        symbol: null
+        symbol: null,
+        logo: null
     }
 
     render() {
         let { stock, company } = this.props;
+        let { logo } = this.state;
         if ((stock && this.state.loading) || stock !== this.state.symbol) {
             axios.get(`/api/data/company/${stock}/chart`)
             .then(res => {
                 this.setState({ data: res.data, loading: false, symbol: stock })
+                axios.get(`/api/data/getlogo/${stock}`)
+                .then(res => {
+                    this.setState({ logo: res.data.url })
+                    // debugger
+                }).catch(err => {
+                    debugger
+                })
             }).catch(err => {
                 debugger
             })
+
         }
-        
+        // debugger
         return(
             <div>
                 { (this.state.loading) 
@@ -31,6 +41,7 @@ export default class Graph extends Component {
                 </div>)
                 :
                 (<div>
+                    <img src={logo}></img>
                     <h1>{company.companyName}</h1>
                     <p><strong>CEO:</strong> {company.CEO}<br/>
                     <strong>Description:</strong> {company.description}<br/>

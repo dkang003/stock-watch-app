@@ -62,7 +62,7 @@ export default class Profile extends Component {
 
         return(
             <div className="row">
-                <div className="col-3">
+                <div className="col-3 container text-center">
                     { (symbols.length > 0)
                     ? (symbols.map((symbol, i) => {
                         return <WatchedList 

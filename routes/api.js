@@ -13,6 +13,8 @@ apiRoutes.get('/allnews', apiController.index);
 apiRoutes.get('/companies', apiController.companies);
 // get most active companies
 apiRoutes.get('/mostactive', apiController.mostactive);
+// get logo
+apiRoutes.get('/getlogo/:symbol', apiController.logo);
 // get one company
 apiRoutes.get('/company/:symbol', apiController.company);
 // get one company's charts

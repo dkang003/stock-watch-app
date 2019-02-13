@@ -39,7 +39,7 @@ export default class Search extends Component {
     }
 
     render() {
-        let { companies, searchResult } = this.state;
+        let { searchResult } = this.state;
         let { currentUser } = this.props;
         // debugger
         
@@ -59,7 +59,7 @@ export default class Search extends Component {
             </form>
             { searchResult ? searchResult.map((result,index) => {
                 return <div className="card col-12" key={index}>
-                <div className="card-body text-left">
+                <div className="card-body text-center">
                     <h4 className="card-title">{result.name}</h4>
                     <h4 className="card-subtitle">Symbol: {result.symbol}</h4>
                 </div>
