@@ -17,9 +17,11 @@ export default class Search extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         let {searchString, companies} = this.state;
-
+        
         let searched = companies.filter(obj => {
             if (obj.name.toLowerCase().indexOf(searchString.toLowerCase()) === 0) {
+                return obj.name;
+            } else if (obj.symbol.indexOf(searchString.toUpperCase()) === 0 ) {
                 return obj.name;
             }
         })
