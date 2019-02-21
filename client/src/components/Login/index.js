@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import httpClient from '../../utilities/httpClient';
+import './index.css';
 
 class Login extends Component {
     state = {
@@ -29,7 +30,7 @@ class Login extends Component {
         let { email, password } = this.state;
         
         return(
-            <div>
+            <div className="container">
                 <h1>Log In</h1>
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group">

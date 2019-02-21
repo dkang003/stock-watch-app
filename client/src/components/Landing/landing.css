@@ -1,0 +1,19 @@
+.jumbotron {
+    color: green;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0);
+    font-family: 'Space Mono', monospace;
+    text-shadow:
+    -1px -1px 0 rgb(255, 255, 255),
+    1px -1px 0 rgb(255, 255, 255),
+    -1px 1px 0 rgb(255, 255, 255),
+    1px 1px 0 rgb(255, 255, 255);  
+}
+
+.jumbotron h1 {
+    font-size: 4em;
+}
+
+.jumbotron p {
+    font-size: 1.5em;
+}

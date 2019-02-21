@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import httpClient from '../../utilities/httpClient';
 import axios from 'axios';
+import './index.css';
 
 class Signup extends Component {
     state = {
@@ -29,7 +30,7 @@ class Signup extends Component {
         let { name, email, password } = this.state;
 
         return(
-            <div>
+            <div className="container">
                 <h1>Sign Up!</h1>
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group">

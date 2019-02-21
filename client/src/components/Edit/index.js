@@ -49,7 +49,7 @@ export default class Edit extends Component {
     render() {
         // debugger
         return(
-            <div>
+            <div className="container">
                 <h1>Edit Profile!</h1>
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group">

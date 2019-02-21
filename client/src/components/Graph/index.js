@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Label, ResponsiveContainer } from 'recharts';
 import axios from 'axios';
 import HomeGraph from '../HomeGraph';
+import './index.css';
 
 export default class Graph extends Component {
     // this.props.stock // is a sybol of the stock
@@ -35,12 +36,12 @@ export default class Graph extends Component {
         return(
             <div>
                 { (this.state.loading) 
-                ? (<div>
+                ? (<div className="graph">
                     <h1>Most Active Stocks</h1>
                     <HomeGraph />
                 </div>)
                 :
-                (<div>
+                (<div className="graph">
                     <img src={logo}></img>
                     <h1>{company.companyName}</h1>
                     <p><strong>CEO:</strong> {company.CEO}<br/>

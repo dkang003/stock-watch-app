@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import './index.css';
 
 export default class Stories extends Component {
     state = {
@@ -50,7 +51,7 @@ export default class Stories extends Component {
             <div>
             {relatedStoriesExist ? 
             (
-                <div>
+                <div className="stories">
                     <h1>Related News</h1>
                     <div className="row">
                     { this.state.relatedStories.map((story, i) => {
@@ -68,7 +69,7 @@ export default class Stories extends Component {
                 </div>
             )
             :(
-                <div>
+                <div className="stories">
                     <h1>Top News</h1>
                     <div className="row">
                     { stories.map((story, i) => {

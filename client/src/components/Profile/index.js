@@ -76,7 +76,7 @@ export default class Profile extends Component {
                 
                     <Search currentUser={currentUser} handleClick={this.handleClick} />    
                 </div>
-                <div className="col-9">
+                <div className="container col-9">
                     <Graph stock={this.state.stock} company={this.state.companyInfo} />
     {/* Show top stories by default, show related stories if company is selected */}
                     <Stories stock={this.state.stock} />
