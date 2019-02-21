@@ -55,9 +55,10 @@ Deploying to Heroku
 1. Fix glitches
 2. Make it look good
 3. Add Snapshots (3rd model)
+4. Options to display graph by time (week vs month vs years)
 
 ##GitHub Repo
 https://github.com/dkang003/stock-watch-app
 
 ##Deployed App
-[Click here for App](https://dk-stockwatch.herokuapp.com/profile)
+[Click here for App](https://dk-stockwatch.herokuapp.com/)
